@@ -4,7 +4,7 @@ import 'package:islami/Quran/chapters.dart';
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});
 
-  List<String> names = [
+  final List<String> names = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -129,21 +129,59 @@ class QuranTab extends StatelessWidget {
         Expanded(
             flex: 1,
             child: Image.asset("lib/assets/images/qur2an_screen_logo.png")),
+        Divider(
+          color: Theme.of(context).primaryColor,
+          thickness: 3,
+          height: 2,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Expanded(
+              child: Text(
+                "رقم السورة",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: "ElMessiri",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+            ),
+            Container(
+              width: 3,
+              height: 50,
+              color: Theme.of(context).primaryColor,
+            ),
+            const Expanded(
+              child: Text("اسم السورة",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "ElMessiri",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25)),
+            )
+          ],
+        ),
+        Divider(
+          color: Theme.of(context).primaryColor,
+          thickness: 3,
+          height: 2,
+        ),
         Expanded(
           flex: 2,
-          child: ListView.separated(
+          child: ListView.builder(
               itemBuilder: (context, index) {
                 return Chapters(
                   title: names[index],
                   index: index,
                 );
               },
-              separatorBuilder: (context, index) => Container(
-                    color: Theme.of(context).primaryColor,
-                    width: double.infinity,
-                    height: 2,
-                    margin: const EdgeInsets.symmetric(horizontal: 30),
-                  ),
+              // separatorBuilder: (context, index) => Container(
+              //       color: Theme.of(context).primaryColor,
+              //       width: double.infinity,
+              //       height: 2,
+              //       margin: const EdgeInsets.symmetric(horizontal: 30),
+              //     ),
               itemCount: names.length),
         )
       ],

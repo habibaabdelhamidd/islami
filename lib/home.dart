@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hdeeth/hadeeth.dart';
-import 'package:islami/Quran/quranTab.dart';
+import 'package:islami/Quran/quran_tab.dart';
+import 'package:islami/radio/radio_tab.dart';
+import 'package:islami/sebha/sebha.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = 'home';
@@ -64,5 +66,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> tabs = [
     QuranTab(),
     const HadithTab(),
+    const RadioTab(),
+    const Sebha(),
   ];
 }

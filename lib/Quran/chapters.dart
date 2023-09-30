@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Quran/chapterContent.dart';
+import 'package:islami/Quran/chapter_content.dart';
 
 class Chapters extends StatelessWidget {
   final String title;
@@ -14,14 +14,29 @@ class Chapters extends StatelessWidget {
         Navigator.pushNamed(context, "content",
             arguments: ChapterContentDetails(title, index));
       },
-      child: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(7),
-          child: Text(
-            title,
-            style: const TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, fontFamily: "Inter"),
-          )),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              "${index + 1}",
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontFamily: "Inter", fontSize: 25),
+            ),
+          ),
+          Container(
+            width: 3,
+            height: 50,
+            color: Theme.of(context).primaryColor,
+          ),
+          Expanded(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 25, fontFamily: "Inter"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
