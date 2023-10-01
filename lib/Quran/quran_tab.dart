@@ -130,40 +130,34 @@ class QuranTab extends StatelessWidget {
             flex: 1,
             child: Image.asset("lib/assets/images/qur2an_screen_logo.png")),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).dividerColor,
           thickness: 3,
           height: 2,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
                 "رقم السورة",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: "ElMessiri",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
             Container(
               width: 3,
               height: 50,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).dividerColor,
             ),
-            const Expanded(
+            Expanded(
               child: Text("اسم السورة",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: "ElMessiri",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25)),
+                  style: Theme.of(context).textTheme.titleMedium),
             )
           ],
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).dividerColor,
           thickness: 3,
           height: 2,
         ),
@@ -176,12 +170,6 @@ class QuranTab extends StatelessWidget {
                   index: index,
                 );
               },
-              // separatorBuilder: (context, index) => Container(
-              //       color: Theme.of(context).primaryColor,
-              //       width: double.infinity,
-              //       height: 2,
-              //       margin: const EdgeInsets.symmetric(horizontal: 30),
-              //     ),
               itemCount: names.length),
         )
       ],

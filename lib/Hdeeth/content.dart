@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Hdeeth/hadeeth.dart';
+import 'package:islami/Hdeeth/hadithdata.dart';
 
 class HadithContent extends StatelessWidget {
   static const String routeName = "hadithContent";
@@ -20,21 +20,16 @@ class HadithContent extends StatelessWidget {
           title: Text(args.title),
         ),
         body: Card(
-            surfaceTintColor: Colors.white,
-            elevation: 20,
-            margin: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               alignment: Alignment.center,
               child: SingleChildScrollView(
-                child: Text(args.content,
-                    textDirection: TextDirection.rtl,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    )),
-              ),
+                child: Text(
+              args.content,
+              textDirection: TextDirection.rtl,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+          ),
             )),
       ),
     );

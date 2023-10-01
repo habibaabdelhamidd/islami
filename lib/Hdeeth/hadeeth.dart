@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/Hdeeth/hadith_title.dart';
+import 'package:islami/Hdeeth/hadithdata.dart';
 
 class HadithTab extends StatefulWidget {
   const HadithTab({super.key});
@@ -22,15 +23,15 @@ class _HadithTabState extends State<HadithTab> {
             flex: 1, child: Image.asset("lib/assets/images/hadeth_logo.png")),
         Divider(
           thickness: 3,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).dividerColor,
         ),
-        const Text(
+        Text(
           "الاحاديث",
-          style: TextStyle(fontSize: 25, fontFamily: "ElMessiri"),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         Divider(
           thickness: 3,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).dividerColor,
         ),
         Expanded(
             flex: 2,
@@ -38,7 +39,9 @@ class _HadithTabState extends State<HadithTab> {
                 ? const Center(child: CircularProgressIndicator())
                 : ListView.builder(
                     itemBuilder: (context, index) {
-                      return HadithTitle(ahadeth[index]);
+                      return HadithTitle(
+                        hadithData: ahadeth[index],
+                      );
                     },
                     itemCount: ahadeth.length))
       ],
@@ -50,9 +53,9 @@ class _HadithTabState extends State<HadithTab> {
   loadhadeth() async {
     String fileContent =
         await rootBundle.loadString('lib/assets/content/ahadeth.txt');
-    List<String> hadith = fileContent.trim().split('#');
-    for (int i = 0; i < hadith.length; i++) {
-      String singleHadith = hadith[i];
+    List<String> hadithList = fileContent.trim().split('#');
+    for (int i = 0; i < hadithList.length; i++) {
+      String singleHadith = hadithList[i];
       List<String> hadithTitle = singleHadith.trim().split('\n');
       String title = hadithTitle[0];
       hadithTitle.remove(0);
@@ -62,11 +65,4 @@ class _HadithTabState extends State<HadithTab> {
     }
     setState(() {});
   }
-}
-
-class HadithData {
-  String title;
-  String content;
-
-  HadithData(this.title, this.content);
 }

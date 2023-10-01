@@ -20,19 +20,19 @@ class Chapters extends StatelessWidget {
             child: Text(
               "${index + 1}",
               textAlign: TextAlign.center,
-              style: const TextStyle(fontFamily: "Inter", fontSize: 25),
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           Container(
             width: 3,
             height: 50,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).dividerColor,
           ),
           Expanded(
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 25, fontFamily: "Inter"),
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
         ],
