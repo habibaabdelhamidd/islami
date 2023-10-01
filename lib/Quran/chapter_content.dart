@@ -32,12 +32,6 @@ class _ChapterContentState extends State<ChapterContent> {
           body: verses.isEmpty
               ? const Center(child: CircularProgressIndicator())
               : Card(
-                  surfaceTintColor: Colors.white,
-                  elevation: 20,
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
                   child: ListView.separated(
                     itemBuilder: (context, index) {
                       return Container(
@@ -46,9 +40,7 @@ class _ChapterContentState extends State<ChapterContent> {
                         alignment: Alignment.center,
                         child: Text("${verses[index]}{${index + 1}}",
                             textDirection: TextDirection.rtl,
-                            style: const TextStyle(
-                              fontSize: 25,
-                            )),
+                            style: Theme.of(context).textTheme.titleMedium),
                       );
                     },
                     separatorBuilder: (context, index) => Container(
