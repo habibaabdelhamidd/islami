@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/Hdeeth/content.dart';
 import 'package:islami/Quran/chapter_content.dart';
 import 'package:islami/home.dart';
@@ -23,7 +25,18 @@ class MyApplication extends StatelessWidget {
         "content": (_) => const ChapterContent(),
         "hadithContent": (_) => const HadithContent(),
       },
-      initialRoute: 'home',
+      home: const HomePage(),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      locale: const Locale("en"),
     );
   }
 }

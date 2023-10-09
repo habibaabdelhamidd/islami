@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/settings/languageBottomSheet.dart';
 import 'package:islami/settings/themeBottomSheet.dart';
 
@@ -17,7 +18,8 @@ class _SettingsState extends State<Settings> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Theme:", style: Theme.of(context).textTheme.titleSmall),
+          Text(AppLocalizations.of(context)!.theme,
+              style: Theme.of(context).textTheme.titleSmall),
           InkWell(
             onTap: () {
               themeBottomSheet();
@@ -36,7 +38,8 @@ class _SettingsState extends State<Settings> {
                     style: Theme.of(context).textTheme.labelSmall)),
           ),
           const SizedBox(height: 40),
-          Text("Language:", style: Theme.of(context).textTheme.titleSmall),
+          Text(AppLocalizations.of(context)!.language,
+              style: Theme.of(context).textTheme.titleSmall),
           InkWell(
             onTap: () {
               languageBottomSheet();
