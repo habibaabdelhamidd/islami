@@ -19,22 +19,26 @@ class _SebhaState extends State<Sebha> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              const Image(
-                  image: AssetImage("lib/assets/images/head_sebha_logo.png")),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.098, bottom: 2),
-                child: AnimatedRotation(
-                    turns: turns,
-                    duration: const Duration(seconds: 1),
-                    child: const Image(
-                        image: AssetImage(
-                            "lib/assets/images/body_sebha_logo.png"))),
-              ),
-            ],
+          GestureDetector(
+            onTap: increment,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                const Image(
+                    image: AssetImage("lib/assets/images/head_sebha_logo.png")),
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.098,
+                      bottom: 2),
+                  child: AnimatedRotation(
+                      turns: turns,
+                      duration: const Duration(seconds: 1),
+                      child: const Image(
+                          image: AssetImage(
+                              "lib/assets/images/body_sebha_logo.png"))),
+                ),
+              ],
+            ),
           ),
           Text(
             "عدد التسبيحات",
@@ -56,7 +60,7 @@ class _SebhaState extends State<Sebha> {
                     MaterialStatePropertyAll(Theme.of(context).dividerColor),
                 padding: const MaterialStatePropertyAll(
                     EdgeInsets.symmetric(vertical: 10, horizontal: 30))),
-            onPressed: increment,
+            onPressed: () {},
             child: Text(azkar[index],
                 style: Theme.of(context).textTheme.labelMedium),
           )

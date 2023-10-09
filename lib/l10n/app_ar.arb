@@ -1,0 +1,13 @@
+{
+  "app_name": "اسلامي",
+  "quran": "القران",
+  "hadith": "الحديث",
+  "tasbeh": "تسبيح",
+  "radio": "الاذاعة",
+  "hadith_number": "رقم الحديث",
+  "chapter_num": "رقم السورة",
+  "chapter_name": "اسم السورة",
+  "settings": "الاعدادات",
+  "language": "اللغة",
+  "theme": "الوضع"
+}
