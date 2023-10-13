@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class Sebha extends StatefulWidget {
   const Sebha({super.key});
@@ -15,6 +17,7 @@ class _SebhaState extends State<Sebha> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -24,18 +27,26 @@ class _SebhaState extends State<Sebha> {
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
-                const Image(
-                    image: AssetImage("lib/assets/images/head_sebha_logo.png")),
+                Image(
+                    image: AssetImage(
+                        settingsProvider.currentTheme == ThemeMode.dark
+                            ? "lib/assets/images/head_sebha_dark.png"
+                            : "lib/assets/images/head_sebha_logo.png")),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.098,
+                      top: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.098,
                       bottom: 2),
                   child: AnimatedRotation(
                       turns: turns,
                       duration: const Duration(seconds: 1),
-                      child: const Image(
+                      child: Image(
                           image: AssetImage(
-                              "lib/assets/images/body_sebha_logo.png"))),
+                              settingsProvider.currentTheme == ThemeMode.dark
+                                  ? "lib/assets/images/body_sebha_dark.png"
+                                  : "lib/assets/images/body_sebha_logo.png"))),
                 ),
               ],
             ),
@@ -57,7 +68,7 @@ class _SebhaState extends State<Sebha> {
           ElevatedButton(
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStatePropertyAll(Theme.of(context).dividerColor),
+                MaterialStatePropertyAll(Theme.of(context).dividerColor),
                 padding: const MaterialStatePropertyAll(
                     EdgeInsets.symmetric(vertical: 10, horizontal: 30))),
             onPressed: () {},

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hdeeth/hadithdata.dart';
+import 'package:islami/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadithContent extends StatelessWidget {
   static const String routeName = "hadithContent";
@@ -8,11 +10,15 @@ class HadithContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as HadithData;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    var args = ModalRoute
+        .of(context)
+        ?.settings
+        .arguments as HadithData;
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("lib/assets/images/default_bg.png"),
+            image: AssetImage(settingsProvider.changeBg()),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -25,11 +31,11 @@ class HadithContent extends StatelessWidget {
               alignment: Alignment.center,
               child: SingleChildScrollView(
                 child: Text(
-              args.content,
-              textDirection: TextDirection.rtl,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-          ),
+                  args.content,
+                  textDirection: TextDirection.rtl,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ),
             )),
       ),
     );

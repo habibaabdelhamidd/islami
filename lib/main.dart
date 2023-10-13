@@ -4,22 +4,27 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/Hdeeth/content.dart';
 import 'package:islami/Quran/chapter_content.dart';
 import 'package:islami/home.dart';
+import 'package:provider/provider.dart';
+import 'provider/settings_provider.dart';
 import 'package:islami/theme.dart';
 
 void main() {
-  runApp(const MyApplication());
+  runApp(ChangeNotifierProvider(
+      create: (buildContext) => SettingsProvider(),
+      child: const MyApp()));
 }
 
-class MyApplication extends StatelessWidget {
-  const MyApplication({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       title: 'Islami',
       theme: MyTheme.light,
       darkTheme: MyTheme.dark,
-      themeMode: ThemeMode.dark,
+      themeMode: settingsProvider.currentTheme,
       routes: {
         "home": (_) => const HomePage(),
         "content": (_) => const ChapterContent(),
@@ -36,7 +41,7 @@ class MyApplication extends StatelessWidget {
         Locale('en'),
         Locale('ar'),
       ],
-      locale: const Locale("en"),
+      locale: Locale(settingsProvider.currentLang),
     );
   }
 }

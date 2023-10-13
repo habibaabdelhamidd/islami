@@ -9,5 +9,7 @@
   "chapter_name": "Chapter name",
   "settings": "Settings",
   "language": "Language",
-  "theme": "Theme"
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark"
 }

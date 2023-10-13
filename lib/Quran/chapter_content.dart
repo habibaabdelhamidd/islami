@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class ChapterContent extends StatefulWidget {
   static const String routeName = "content";
@@ -13,16 +15,20 @@ class ChapterContent extends StatefulWidget {
 class _ChapterContentState extends State<ChapterContent> {
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     ChapterContentDetails details =
-        ModalRoute.of(context)?.settings.arguments as ChapterContentDetails;
+    ModalRoute
+        .of(context)
+        ?.settings
+        .arguments as ChapterContentDetails;
     if (verses.isEmpty) {
       loadFile(details.index);
     }
 
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("lib/assets/images/default_bg.png"),
+              image: AssetImage(settingsProvider.changeBg()),
               fit: BoxFit.fill),
         ),
         child: Scaffold(
@@ -32,26 +38,26 @@ class _ChapterContentState extends State<ChapterContent> {
           body: verses.isEmpty
               ? const Center(child: CircularProgressIndicator())
               : Card(
-                  child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 5),
-                        alignment: Alignment.center,
-                        child: Text("${verses[index]}{${index + 1}}",
-                            textDirection: TextDirection.rtl,
-                            style: Theme.of(context).textTheme.titleMedium),
-                      );
-                    },
-                    separatorBuilder: (context, index) => Container(
-                      color: Theme.of(context).primaryColor,
-                      width: double.infinity,
-                      height: 2,
-                      margin: const EdgeInsets.symmetric(horizontal: 30),
-                    ),
-                    itemCount: verses.length,
-                  ),
-                ),
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30, vertical: 5),
+                  alignment: Alignment.center,
+                  child: Text("${verses[index]}{${index + 1}}",
+                      textDirection: TextDirection.rtl,
+                      style: Theme.of(context).textTheme.titleMedium),
+                );
+              },
+              separatorBuilder: (context, index) => Container(
+                color: Theme.of(context).primaryColor,
+                width: double.infinity,
+                height: 2,
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+              ),
+              itemCount: verses.length,
+            ),
+          ),
         ));
   }
 

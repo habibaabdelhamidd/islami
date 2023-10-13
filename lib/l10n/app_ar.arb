@@ -9,5 +9,7 @@
   "chapter_name": "اسم السورة",
   "settings": "الاعدادات",
   "language": "اللغة",
-  "theme": "الوضع"
+  "theme": "الوضع",
+  "light": "مضئ",
+  "dark": "مظلم"
 }

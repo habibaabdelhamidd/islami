@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/Hdeeth/hadeeth.dart';
 import 'package:islami/Quran/quran_tab.dart';
+import 'package:islami/provider/settings_provider.dart';
 import 'package:islami/radio/radio_tab.dart';
 import 'package:islami/sebha/sebha.dart';
 import 'package:islami/settings/settings.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = 'home';
@@ -20,10 +22,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("lib/assets/images/dark_bg.png"),
+            image: AssetImage(settingsProvider.changeBg()),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
